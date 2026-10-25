@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>KasuwaDirect - Kasuwa to Your Doorstep</title>
+  <title>KasuwaDirect - Doorstep Market Delivery</title>
   <style>
     :root {
-      --primary: #16a34a; /* Fresh green for local delivery */
+      --primary: #16a34a; /* Fresh market green */
       --primary-hover: #15803d;
+      --whatsapp: #25d366; /* WhatsApp brand green */
+      --whatsapp-hover: #1da851;
       --accent: #f59e0b;
       --bg: #f8fafc;
       --text: #1e293b;
@@ -26,6 +28,7 @@
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      padding-bottom: 70px;
     }
 
     /* Header & Nav */
@@ -57,46 +60,73 @@
       color: var(--accent);
     }
 
-    .btn-primary {
-      background-color: var(--primary);
-      color: #fff;
+    .nav-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn {
       padding: 0.6rem 1.2rem;
       border: none;
       border-radius: 8px;
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
-      transition: background 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #fff;
     }
 
     .btn-primary:hover {
       background-color: var(--primary-hover);
     }
 
+    .btn-whatsapp {
+      background-color: var(--whatsapp);
+      color: #fff;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: var(--whatsapp-hover);
+    }
+
     /* Hero Section */
     .hero {
       background: linear-gradient(135deg, #16a34a 0%, #065f46 100%);
       color: #fff;
-      padding: 4rem 1.5rem;
+      padding: 3.5rem 1.5rem 4.5rem;
       text-align: center;
     }
 
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       margin-bottom: 1rem;
     }
 
     .hero p {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       max-width: 600px;
-      margin: 0 auto 2rem;
+      margin: 0 auto 1.5rem;
       opacity: 0.9;
+    }
+
+    .hero-btn {
+      font-size: 1.05rem;
+      padding: 0.8rem 1.6rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
     }
 
     /* Main Container */
     .container {
       max-width: 1100px;
-      margin: -2rem auto 3rem;
+      margin: -2.5rem auto 3rem;
       padding: 0 1.5rem;
     }
 
@@ -110,6 +140,7 @@
       .grid-2 {
         grid-template-columns: 1fr;
       }
+      .hero h1 { font-size: 1.8rem; }
     }
 
     /* Card Styling */
@@ -121,9 +152,12 @@
     }
 
     .card h2 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       margin-bottom: 1rem;
       color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     /* Form Styles */
@@ -133,10 +167,9 @@
 
     .form-group label {
       display: block;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       margin-bottom: 0.4rem;
-
     }
 
     .form-group input,
@@ -151,10 +184,10 @@
 
     .form-group textarea {
       resize: vertical;
-      height: 90px;
+      height: 100px;
     }
 
-    /* Features / How It Works */
+    /* How It Works Steps */
     .step-list {
       list-style: none;
     }
@@ -162,41 +195,89 @@
     .step-item {
       display: flex;
       align-items: flex-start;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .step-number {
       background-color: var(--accent);
       color: #fff;
       font-weight: bold;
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-right: 1rem;
       flex-shrink: 0;
+      font-size: 0.9rem;
     }
 
     .step-text h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.2rem;
+      font-size: 1rem;
+      margin-bottom: 0.1rem;
     }
 
     .step-text p {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--light-text);
     }
 
-    /* Status Box */
-    .price-box {
-      background-color: #f1f5f9;
-      padding: 1rem;
-      border-radius: 8px;
-      margin-top: 1rem;
+    /* Direct WhatsApp Box */
+    .quick-whatsapp-box {
+      background: #e8f5e9;
+      border: 1px solid #c8e6c9;
+      padding: 1.2rem;
+      border-radius: 10px;
+      margin-top: 1.5rem;
       text-align: center;
+    }
+
+    .quick-whatsapp-box p {
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+      color: #2e7d32;
       font-weight: 600;
+    }
+
+    /* Floating WhatsApp Button */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--whatsapp);
+      color: white;
+      border-radius: 50px;
+      padding: 12px 20px;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 1000;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.05);
+      background-color: var(--whatsapp-hover);
+    }
+
+    /* Output Link Box */
+    .generated-link-container {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: #f1f5f9;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .generated-link-container p {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--light-text);
+      margin-bottom: 0.5rem;
     }
 
     footer {
@@ -210,95 +291,129 @@
 </head>
 <body>
 
-  <!-- Header Header -->
+  <!-- Header -->
   <header>
     <div class="nav-container">
       <a href="#" class="logo">Kasuwa<span>Direct</span></a>
-      <a href="#order" class="btn-primary">Order Now</a>
+      <div class="nav-buttons">
+        <!-- Replace phone number below -->
+        <a href="https://wa.me/2348000000000" target="_blank" class="btn btn-whatsapp">
+          💬 Chat on WhatsApp
+        </a>
+      </div>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
     <h1>Kasuwa Straight to Your Doorstep</h1>
-    <p>Tell us what you need from Kasuwa (market items, groceries, packages), and our riders will purchase and deliver it straight to your home.</p>
+    <p>Order anything from Kasuwa market (groceries, food items, ingredients, packages) and get it delivered directly to your doorstep.</p>
+    <a href="#order" class="btn btn-whatsapp hero-btn">🛒 Place Delivery Order</a>
   </section>
 
   <!-- Main Content -->
   <main class="container">
     <div class="grid-2">
       
-      <!-- Left Column: How It Works -->
+      <!-- Left Column: Service Details & Quick WhatsApp Link -->
       <div class="card">
-        <h2>How It Works</h2>
+        <h2>📋 How It Works</h2>
         <ul class="step-list">
           <li class="step-item">
             <div class="step-number">1</div>
             <div class="step-text">
-              <h3>Send Your Shopping List</h3>
-              <p>Fill out the delivery request form with details of the items you need from Kasuwa.</p>
+              <h3>Fill in your list</h3>
+              <p>Specify the items you want us to buy from Kasuwa market.</p>
             </div>
           </li>
           <li class="step-item">
             <div class="step-number">2</div>
             <div class="step-text">
-              <h3>We Pick & Purchase</h3>
-              <p>Our experienced rider goes straight to Kasuwa to pick up high-quality items for you.</p>
+              <h3>We Purchase & Pack</h3>
+              <p>Our agent buys fresh items directly from trusted sellers in Kasuwa.</p>
             </div>
           </li>
           <li class="step-item">
             <div class="step-number">3</div>
             <div class="step-text">
-              <h3>Fast Doorstep Delivery</h3>
-              <p>We deliver right to your location and you pay on delivery or via digital transfer.</p>
+              <h3>Doorstep Delivery</h3>
+              <p>Your items arrive at your home quickly. Pay cash or via bank transfer on delivery.</p>
             </div>
           </li>
         </ul>
 
-        <div class="price-box">
-          ⚡ Flat local delivery fees start from ₦500 within the area!
+        <!-- Direct WhatsApp Contact Box -->
+        <div class="quick-whatsapp-box">
+          <p>Prefer to send a direct voice note or custom message?</p>
+          <!-- Replace phone number below -->
+          <a href="https://wa.me/2348000000000?text=Hello!%20I%20have%20an%20inquiry%20about%20a%20Kasuwa%20delivery." target="_blank" class="btn btn-whatsapp" style="width: 100%; justify-content: center;">
+            📲 Message Us Directly on WhatsApp
+          </a>
         </div>
       </div>
 
-      <!-- Right Column: Order Form -->
+      <!-- Right Column: Order Form + Link Generator -->
       <div class="card" id="order">
-        <h2>Request a Delivery</h2>
+        <h2>🛒 Delivery Request Form</h2>
         <form id="deliveryForm">
           <div class="form-group">
-            <label for="fullName">Your Full Name</label>
-            <input type="text" id="fullName" placeholder="e.g. Ahmed Musa" required />
+            <label for="fullName">Your Name</label>
+            <input type="text" id="fullName" placeholder="e.g. Ahmed Salihu" required />
           </div>
 
           <div class="form-group">
-            <label for="phone">Phone / WhatsApp Number</label>
+            <label for="phone">Phone Number</label>
             <input type="tel" id="phone" placeholder="e.g. 08012345678" required />
           </div>
 
           <div class="form-group">
             <label for="address">Delivery Address (Doorstep Location)</label>
-            <input type="text" id="address" placeholder="Street name, landmark, house number" required />
+            <input type="text" id="address" placeholder="e.g. Kuriga Road, Badarawa, Kaduna" required />
           </div>
 
           <div class="form-group">
-            <label for="items">Kasuwa Items / Instructions</label>
-            <textarea id="items" placeholder="List items needed (e.g. 1 bag of rice, fresh tomatoes, 1 pack of salt...)" required></textarea>
+            <label for="items">Kasuwa Shopping List / Package Description</label>
+            <textarea id="items" placeholder="List your items (e.g., 1 bag of rice, fresh tomatoes, oil...)" required></textarea>
           </div>
 
-          <button type="submit" class="btn-primary" style="width: 100%; padding: 0.9rem;">
-            Submit Order via WhatsApp
+          <button type="submit" class="btn btn-whatsapp" style="width: 100%; padding: 0.9rem; justify-content: center; font-size: 1rem;">
+            🚀 Submit Order via WhatsApp Link
           </button>
         </form>
+
+        <!-- Container where direct web link is displayed after submitting -->
+        <div id="generatedLinkBox" class="generated-link-container">
+          <p>Your custom WhatsApp delivery link is ready!</p>
+          <a id="directWhatsAppLink" href="#" target="_blank" class="btn btn-whatsapp" style="width: 100%; justify-content: center;">
+            Click Here to Open WhatsApp Chat
+          </a>
+        </div>
       </div>
 
     </div>
   </main>
 
+  <!-- Floating Sticky WhatsApp Button (Bottom Right) -->
+  <!-- Replace phone number below -->
+  <a href="https://wa.me/2348000000000?text=Hello%20KasuwaDirect!%20I%20want%20to%20make%20a%20delivery%20order." target="_blank" class="floating-whatsapp">
+    💬 WhatsApp Us
+  </a>
+
   <footer>
-    <p>&copy; 2026 KasuwaDirect. Fast & Reliable Doorstep Delivery Service.</p>
+    <p>&copy; 2026 KasuwaDirect. Doorstep Local Market Delivery Service.</p>
   </footer>
 
-  <!-- JavaScript for WhatsApp Integration -->
+  <!-- JavaScript to handle direct WhatsApp link creation -->
   <script>
+    // Set your phone number in international format (no + sign, no leading 0)
+    const MY_WHATSAPP_NUMBER = "2348000000000"; // <--- CHANGE THIS TO YOUR NUMBER
+
+    // Update static WhatsApp links on page load
+    document.querySelectorAll('a[href*="2348000000000"]').forEach(link => {
+      link.href = link.href.replace("2348000000000", MY_WHATSAPP_NUMBER);
+    });
+
+    // Form Submission Handler
     document.getElementById('deliveryForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -307,18 +422,24 @@
       const address = document.getElementById('address').value;
       const items = document.getElementById('items').value;
 
-      // Replace this with your business WhatsApp phone number (in international format without +)
-      const riderWhatsAppNumber = "2348000000000"; 
+      // Construct formatted text message
+      const messageText = 
+        Hello KasuwaDirect! I want to place a delivery order:%0A%0A +
+        👤 *Name:* ${encodeURIComponent(name)}%0A +
+        📞 *Phone:* ${encodeURIComponent(phone)}%0A +
+        📍 *Delivery Address:* ${encodeURIComponent(address)}%0A +
+        🛒 *Shopping List:*%0A${encodeURIComponent(items)};
 
-      // Format message for WhatsApp
-      const message = Hello KasuwaDirect! I want to place an order:%0A%0A +
-                      *Name:* ${encodeURIComponent(name)}%0A +
-                      *Phone:* ${encodeURIComponent(phone)}%0A +
-                      *Address:* ${encodeURIComponent(address)}%0A +
-                      *Items Needed:*%0A${encodeURIComponent(items)};
+      // Create full WhatsApp web link
+      const whatsappWebUrl = https://wa.me/${MY_WHATSAPP_NUMBER}?text=${messageText};
 
-      // Redirect user to WhatsApp chat with auto-filled message
-      window.open(https://wa.me/${riderWhatsAppNumber}?text=${message}, '_blank');
+      // Update and display link box
+      const directLinkBtn = document.getElementById('directWhatsAppLink');
+      directLinkBtn.href = whatsappWebUrl;
+      document.getElementById('generatedLinkBox').style.display = 'block';
+
+      // Automatically open WhatsApp in a new tab
+      window.open(whatsappWebUrl, '_blank');
     });
   </script>
 </body>
