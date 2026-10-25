@@ -6,15 +6,16 @@
   <title>KasuwaDirect - Doorstep Market Delivery</title>
   <style>
     :root {
-      --primary: #16a34a; /* Fresh market green */
+      --primary: #16a34a;
       --primary-hover: #15803d;
-      --whatsapp: #25d366; /* WhatsApp brand green */
+      --whatsapp: #25d366;
       --whatsapp-hover: #1da851;
       --accent: #f59e0b;
       --bg: #f8fafc;
       --text: #1e293b;
       --light-text: #64748b;
       --card-bg: #ffffff;
+      --error: #ef4444;
     }
 
     * {
@@ -63,10 +64,11 @@
     .nav-buttons {
       display: flex;
       gap: 0.5rem;
+      align-items: center;
     }
 
     .btn {
-      padding: 0.6rem 1.2rem;
+      padding: 0.5rem 1rem;
       border: none;
       border-radius: 8px;
       font-weight: 600;
@@ -74,54 +76,28 @@
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
       transition: all 0.2s ease;
       font-size: 0.9rem;
     }
 
-    .btn-primary {
-      background-color: var(--primary);
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--primary-hover);
-    }
-
-    .btn-whatsapp {
-      background-color: var(--whatsapp);
-      color: #fff;
-    }
-
-    .btn-whatsapp:hover {
-      background-color: var(--whatsapp-hover);
-    }
+    .btn-primary { background-color: var(--primary); color: #fff; }
+    .btn-primary:hover { background-color: var(--primary-hover); }
+    .btn-whatsapp { background-color: var(--whatsapp); color: #fff; }
+    .btn-whatsapp:hover { background-color: var(--whatsapp-hover); }
+    .btn-outline { background-color: transparent; border: 1px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background-color: #f0fdf4; }
 
     /* Hero Section */
     .hero {
       background: linear-gradient(135deg, #16a34a 0%, #065f46 100%);
       color: #fff;
-      padding: 3.5rem 1.5rem 4.5rem;
+      padding: 3rem 1.5rem 4rem;
       text-align: center;
     }
 
-    .hero h1 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto 1.5rem;
-      opacity: 0.9;
-    }
-
-    .hero-btn {
-      font-size: 1.05rem;
-      padding: 0.8rem 1.6rem;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-    }
+    .hero h1 { font-size: 2.2rem; margin-bottom: 0.8rem; }
+    .hero p { font-size: 1.05rem; max-width: 600px; margin: 0 auto 1.5rem; opacity: 0.9; }
 
     /* Main Container */
     .container {
@@ -137,10 +113,8 @@
     }
 
     @media (max-width: 768px) {
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-      .hero h1 { font-size: 1.8rem; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.7rem; }
     }
 
     /* Card Styling */
@@ -149,143 +123,130 @@
       border-radius: 12px;
       padding: 2rem;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      margin-bottom: 1.5rem;
     }
 
     .card h2 {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      margin-bottom: 1.2rem;
       color: var(--text);
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 0.5rem;
     }
 
     /* Form Styles */
     .form-group {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
     }
 
     .form-group label {
       display: block;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
     }
 
     .form-group input,
     .form-group textarea,
     .form-group select {
       width: 100%;
-      padding: 0.75rem;
+      padding: 0.7rem;
       border: 1px solid #cbd5e1;
       border-radius: 6px;
       font-size: 0.95rem;
     }
 
-    .form-group textarea {
-      resize: vertical;
-      height: 100px;
-    }
+    .form-group textarea { resize: vertical; height: 90px; }
 
-    /* How It Works Steps */
-    .step-list {
-      list-style: none;
-    }
-
-    .step-item {
+    /* User Welcome Banner */
+    .user-banner {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
       display: flex;
-      align-items: flex-start;
-      margin-bottom: 1.2rem;
-    }
-
-    .step-number {
-      background-color: var(--accent);
-      color: #fff;
-      font-weight: bold;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      margin-right: 1rem;
-      flex-shrink: 0;
       font-size: 0.9rem;
     }
 
-    .step-text h3 {
-      font-size: 1rem;
-      margin-bottom: 0.1rem;
-    }
+    .user-banner span { font-weight: bold; color: var(--primary); }
 
-    .step-text p {
-      font-size: 0.88rem;
-      color: var(--light-text);
-    }
-
-    /* Direct WhatsApp Box */
-    .quick-whatsapp-box {
-      background: #e8f5e9;
-      border: 1px solid #c8e6c9;
-      padding: 1.2rem;
-      border-radius: 10px;
-      margin-top: 1.5rem;
-      text-align: center;
-    }
-
-    .quick-whatsapp-box p {
+    /* Fee Breakdown Box */
+    .fee-box {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      margin-top: 0.5rem;
       font-size: 0.9rem;
-      margin-bottom: 0.8rem;
-      color: #2e7d32;
+      display: flex;
+      justify-content: space-between;
       font-weight: 600;
     }
+
+    /* Modal Styling for Sign Up / Sign In */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 1rem;
+    }
+
+    .modal {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .modal h2 { margin-bottom: 1rem; font-size: 1.3rem; }
+    .close-modal {
+      position: absolute; top: 15px; right: 20px;
+      font-size: 1.2rem; cursor: pointer; color: var(--light-text);
+    }
+
+    .tab-nav {
+      display: flex;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .tab-btn {
+      flex: 1; padding: 0.6rem; text-align: center; background: none;
+      border: none; font-weight: 600; cursor: pointer; color: var(--light-text);
+    }
+
+    .tab-btn.active { color: var(--primary); border-bottom: 2px solid var(--primary); }
+
+    .auth-form { display: none; }
+    .auth-form.active { display: block; }
 
     /* Floating WhatsApp Button */
     .floating-whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: var(--whatsapp);
-      color: white;
-      border-radius: 50px;
-      padding: 12px 20px;
-      font-weight: bold;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      z-index: 1000;
-      transition: transform 0.2s ease, background-color 0.2s ease;
+      position: fixed; bottom: 20px; right: 20px;
+      background-color: var(--whatsapp); color: white;
+      border-radius: 50px; padding: 12px 20px; font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); text-decoration: none;
+      display: flex; align-items: center; gap: 8px; z-index: 900;
+      transition: transform 0.2s ease;
     }
-
-    .floating-whatsapp:hover {
-      transform: scale(1.05);
-      background-color: var(--whatsapp-hover);
-    }
-
-    /* Output Link Box */
-    .generated-link-container {
-      margin-top: 1rem;
-      padding: 1rem;
-      background-color: #f1f5f9;
-      border-radius: 8px;
-      display: none;
-    }
-
-    .generated-link-container p {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--light-text);
-      margin-bottom: 0.5rem;
-    }
+    .floating-whatsapp:hover { transform: scale(1.05); }
 
     footer {
-      text-align: center;
-      padding: 2rem 1.5rem;
-      color: var(--light-text);
-      font-size: 0.9rem;
-      border-top: 1px solid #e2e8f0;
+      text-align: center; padding: 2rem 1.5rem; color: var(--light-text);
+      font-size: 0.9rem; border-top: 1px solid #e2e8f0;
     }
   </style>
 </head>
@@ -295,11 +256,9 @@
   <header>
     <div class="nav-container">
       <a href="#" class="logo">Kasuwa<span>Direct</span></a>
-      <div class="nav-buttons">
-        <!-- Replace phone number below -->
-        <a href="https://wa.me/2348000000000" target="_blank" class="btn btn-whatsapp">
-          💬 Chat on WhatsApp
-        </a>
+      <div class="nav-buttons" id="headerNavBtns">
+        <button onclick="openAuthModal()" class="btn btn-outline" id="authBtnText">👤 Sign Up / Login</button>
+        <a href="https://wa.me/2348000000000" target="_blank" class="btn btn-whatsapp">💬 Chat</a>
       </div>
     </div>
   </header>
@@ -307,95 +266,138 @@
   <!-- Hero Section -->
   <section class="hero">
     <h1>Kasuwa Straight to Your Doorstep</h1>
-    <p>Order anything from Kasuwa market (groceries, food items, ingredients, packages) and get it delivered directly to your doorstep.</p>
-    <a href="#order" class="btn btn-whatsapp hero-btn">🛒 Place Delivery Order</a>
+    <p>Select your location, send your shopping list, and let our reliable riders deliver straight from the market to your home.</p>
   </section>
 
   <!-- Main Content -->
   <main class="container">
     <div class="grid-2">
       
-      <!-- Left Column: Service Details & Quick WhatsApp Link -->
-      <div class="card">
-        <h2>📋 How It Works</h2>
-        <ul class="step-list">
-          <li class="step-item">
-            <div class="step-number">1</div>
-            <div class="step-text">
-              <h3>Fill in your list</h3>
-              <p>Specify the items you want us to buy from Kasuwa market.</p>
-            </div>
-          </li>
-          <li class="step-item">
-            <div class="step-number">2</div>
-            <div class="step-text">
-              <h3>We Purchase & Pack</h3>
-              <p>Our agent buys fresh items directly from trusted sellers in Kasuwa.</p>
-            </div>
-          </li>
-          <li class="step-item">
-            <div class="step-number">3</div>
-            <div class="step-text">
-              <h3>Doorstep Delivery</h3>
-              <p>Your items arrive at your home quickly. Pay cash or via bank transfer on delivery.</p>
-            </div>
-          </li>
-        </ul>
+      <!-- Left Column: Location & Service Info -->
+      <div>
+        <div class="card">
+          <h2>📍 Supported Delivery Locations</h2>
+          <p style="font-size: 0.9rem; color: var(--light-text); margin-bottom: 1rem;">
+            We pickup fresh items from main local markets (such as Kasuwar Sarki, Central Market, etc.) and deliver across these areas:
+          </p>
+          <ul style="list-style-type: disc; padding-left: 20px; font-size: 0.95krem; line-height: 1.8;">
+            <li><b>Badarawa / Malali</b> (Fastest delivery)</li>
+            <li><b>Ungwan Rimi / Kawo</b></li>
+            <li><b>Tudun Wada / Barnawa</b></li>
+            <li><b>GRA & Central Kaduna</b></li>
+            <li>Other surrounding residential zones (fee varies by distance)</li>
+          </ul>
+        </div>
 
-        <!-- Direct WhatsApp Contact Box -->
-        <div class="quick-whatsapp-box">
-          <p>Prefer to send a direct voice note or custom message?</p>
-          <!-- Replace phone number below -->
-          <a href="https://wa.me/2348000000000?text=Hello!%20I%20have%20an%20inquiry%20about%20a%20Kasuwa%20delivery." target="_blank" class="btn btn-whatsapp" style="width: 100%; justify-content: center;">
-            📲 Message Us Directly on WhatsApp
-          </a>
+        <div class="card">
+          <h2>⚡ How It Works</h2>
+          <p style="font-size: 0.9rem; color: var(--light-text);">
+            1. Sign up once to save your details.<br>
+            2. Choose your neighborhood area & input items.<br>
+            3. Review fee and submit order directly via WhatsApp!
+          </p>
         </div>
       </div>
 
-      <!-- Right Column: Order Form + Link Generator -->
-      <div class="card" id="order">
-        <h2>🛒 Delivery Request Form</h2>
-        <form id="deliveryForm">
-          <div class="form-group">
-            <label for="fullName">Your Name</label>
-            <input type="text" id="fullName" placeholder="e.g. Ahmed Salihu" required />
+      <!-- Right Column: Order Form -->
+      <div>
+        <div class="card" id="order">
+          <h2>🛒 Request Delivery</h2>
+          
+          <!-- User Status Banner -->
+          <div id="userWelcomeBanner" class="user-banner" style="display: none;">
+            <span>Welcome back, <span id="displayName"></span>!</span>
+            <button onclick="logoutUser()" style="background:none; border:none; color:var(--error); cursor:pointer; font-size:0.8rem;">Logout</button>
           </div>
 
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" placeholder="e.g. 08012345678" required />
-          </div>
+          <form id="deliveryForm">
+            <div class="form-group">
+              <label for="fullName">Your Full Name</label>
+              <input type="text" id="fullName" placeholder="e.g. Ahmed Salihu" required />
+            </div>
 
-          <div class="form-group">
-            <label for="address">Delivery Address (Doorstep Location)</label>
-            <input type="text" id="address" placeholder="e.g. Kuriga Road, Badarawa, Kaduna" required />
-          </div>
+            <div class="form-group">
+              <label for="phone">Phone / WhatsApp Number</label>
+              <input type="tel" id="phone" placeholder="e.g. 08012345678" required />
+            </div>
 
-          <div class="form-group">
-            <label for="items">Kasuwa Shopping List / Package Description</label>
-            <textarea id="items" placeholder="List your items (e.g., 1 bag of rice, fresh tomatoes, oil...)" required></textarea>
-          </div>
+            <div class="form-group">
+              <label for="locationArea">Select Delivery Neighborhood / Area</label>
+              <select id="locationArea" required onchange="updateDeliveryFee()">
+                <option value="" disabled selected>-- Choose your area --</option>
+                <option value="Badarawa / Kuriga Road" data-fee="500">Badarawa / Kuriga Road (₦500)</option>
+                <option value="Malali" data-fee="700">Malali (₦700)</option>
+                <option value="Ungwan Rimi" data-fee="800">Ungwan Rimi (₦800)</option>
+                <option value="Kawo" data-fee="1000">Kawo (₦1,000)</option>
+                <option value="Tudun Wada" data-fee="1000">Tudun Wada (₦1,000)</option>
+                <option value="GRA / Central" data-fee="1200">GRA / Central Business District (₦1,200)</option>
+                <option value="Other Area" data-fee="1500">Other Area in Kaduna (₦1,500)</option>
+              </select>
+            </div>
 
-          <button type="submit" class="btn btn-whatsapp" style="width: 100%; padding: 0.9rem; justify-content: center; font-size: 1rem;">
-            🚀 Submit Order via WhatsApp Link
-          </button>
-        </form>
+            <div class="form-group">
+              <label for="address">Specific Street / House Number / Landmark</label>
+              <input type="text" id="address" placeholder="e.g. No. 12 close to junction..." required />
+            </div>
 
-        <!-- Container where direct web link is displayed after submitting -->
-        <div id="generatedLinkBox" class="generated-link-container">
-          <p>Your custom WhatsApp delivery link is ready!</p>
-          <a id="directWhatsAppLink" href="#" target="_blank" class="btn btn-whatsapp" style="width: 100%; justify-content: center;">
-            Click Here to Open WhatsApp Chat
-          </a>
+            <div class="form-group">
+              <label for="items">Kasuwa Shopping List / Items Description</label>
+              <textarea id="items" placeholder="List items needed (e.g. 1 measure of rice, fresh tomatoes, pepper, meat...)" required></textarea>
+            </div>
+
+            <div class="fee-box">
+              <span>Estimated Delivery Fee:</span>
+              <span id="displayFee" style="color: var(--primary);">₦0</span>
+            </div>
+
+            <button type="submit" class="btn btn-whatsapp" style="width: 100%; padding: 0.9rem; justify-content: center; margin-top: 1rem; font-size: 1rem;">
+              🚀 Send Order via WhatsApp
+            </button>
+          </form>
         </div>
       </div>
 
     </div>
   </main>
 
-  <!-- Floating Sticky WhatsApp Button (Bottom Right) -->
-  <!-- Replace phone number below -->
-  <a href="https://wa.me/2348000000000?text=Hello%20KasuwaDirect!%20I%20want%20to%20make%20a%20delivery%20order." target="_blank" class="floating-whatsapp">
+  <!-- Sign Up / Login Modal Window -->
+  <div id="authModal" class="modal-overlay">
+    <div class="modal">
+      <span class="close-modal" onclick="closeAuthModal()">&times;</span>
+      
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('signup')">Sign Up</button>
+        <button class="tab-btn" onclick="switchTab('login')">Login</button>
+      </div>
+
+      <!-- Sign Up Form -->
+      <form id="signupForm" class="auth-form active" onsubmit="handleSignup(event)">
+        <h2>Create Account</h2>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="regName" required placeholder="Ahmed Salihu" />
+        </div>
+        <div class="form-group">
+          <label>WhatsApp Phone Number</label>
+          <input type="tel" id="regPhone" required placeholder="08012345678" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Register & Save</button>
+      </form>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
+        <h2>Customer Login</h2>
+        <div class="form-group">
+          <label>Enter your Registered Phone Number</label>
+          <input type="tel" id="loginPhone" required placeholder="08012345678" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/2348000000000?text=Hello%20KasuwaDirect!" target="_blank" class="floating-whatsapp">
     💬 WhatsApp Us
   </a>
 
@@ -403,43 +405,119 @@
     <p>&copy; 2026 KasuwaDirect. Doorstep Local Market Delivery Service.</p>
   </footer>
 
-  <!-- JavaScript to handle direct WhatsApp link creation -->
+  <!-- JavaScript Application Logic -->
   <script>
-    // Set your phone number in international format (no + sign, no leading 0)
-    const MY_WHATSAPP_NUMBER = "2348000000000"; // <--- CHANGE THIS TO YOUR NUMBER
+    const MY_WHATSAPP_NUMBER = "2348000000000"; // <--- CHANGE TO YOUR NUMBER
 
-    // Update static WhatsApp links on page load
-    document.querySelectorAll('a[href*="2348000000000"]').forEach(link => {
-      link.href = link.href.replace("2348000000000", MY_WHATSAPP_NUMBER);
+    // Initialize page & check saved profile
+    window.addEventListener('DOMContentLoaded', () => {
+      checkSavedUser();
+      
+      // Update header/floating links
+      document.querySelectorAll('a[href*="2348000000000"]').forEach(link => {
+        link.href = link.href.replace("2348000000000", MY_WHATSAPP_NUMBER);
+      });
     });
 
-    // Form Submission Handler
+    // Delivery Fee Calculator
+    function updateDeliveryFee() {
+      const select = document.getElementById('locationArea');
+      const selectedOption = select.options[select.selectedIndex];
+      const fee = selectedOption.getAttribute('data-fee') || 0;
+      document.getElementById('displayFee').textContent = fee > 0 ? ₦${Number(fee).toLocaleString()} : '₦0';
+    }
+
+    // Modal Controls
+    function openAuthModal() { document.getElementById('authModal').style.display = 'flex'; }
+    function closeAuthModal() { document.getElementById('authModal').style.display = 'none'; }
+    
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+      if(tab === 'signup') {
+        document.querySelectorAll('.tab-btn')[0].classList.add('active');
+        document.getElementById('signupForm').classList.add('active');
+      } else {
+        document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        document.getElementById('loginForm').classList.add('active');
+      }
+    }
+
+    // Auth Handlers (Saved locally in browser)
+    function handleSignup(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value;
+      const phone = document.getElementById('regPhone').value;
+      
+      const userData = { name, phone };
+      localStorage.setItem('kasuwaUser', JSON.stringify(userData));
+      
+      alert('Account created successfully!');
+      closeAuthModal();
+      checkSavedUser();
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const phone = document.getElementById('loginPhone').value;
+      const saved = localStorage.getItem('kasuwaUser');
+      
+      if(saved) {
+        const user = JSON.parse(saved);
+        if(user.phone === phone) {
+          alert(Welcome back, ${user.name}!);
+          closeAuthModal();
+          checkSavedUser();
+          return;
+        }
+      }
+      alert('Phone number not found. Please Sign Up first.');
+    }
+
+    function checkSavedUser() {
+      const saved = localStorage.getItem('kasuwaUser');
+      if(saved) {
+        const user = JSON.parse(saved);
+        document.getElementById('fullName').value = user.name;
+        document.getElementById('phone').value = user.phone;
+        document.getElementById('displayName').textContent = user.name;
+        document.getElementById('userWelcomeBanner').style.display = 'flex';
+        document.getElementById('authBtnText').textContent = 👤 Hi, ${user.name.split(' ')[0]};
+      }
+    }
+
+    function logoutUser() {
+      localStorage.removeItem('kasuwaUser');
+      document.getElementById('userWelcomeBanner').style.display = 'none';
+      document.getElementById('authBtnText').textContent = '👤 Sign Up / Login';
+      document.getElementById('fullName').value = '';
+      document.getElementById('phone').value = '';
+      alert('Logged out successfully.');
+    }
+
+    // Form Submission Handler -> WhatsApp
     document.getElementById('deliveryForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
       const name = document.getElementById('fullName').value;
       const phone = document.getElementById('phone').value;
+      const areaSelect = document.getElementById('locationArea');
+      const area = areaSelect.value;
+      const fee = areaSelect.options[areaSelect.selectedIndex].getAttribute('data-fee');
       const address = document.getElementById('address').value;
       const items = document.getElementById('items').value;
 
-      // Construct formatted text message
       const messageText = 
-        Hello KasuwaDirect! I want to place a delivery order:%0A%0A +
+        Hello KasuwaDirect! New Delivery Order:%0A%0A +
         👤 *Name:* ${encodeURIComponent(name)}%0A +
         📞 *Phone:* ${encodeURIComponent(phone)}%0A +
-        📍 *Delivery Address:* ${encodeURIComponent(address)}%0A +
+        📍 *Area:* ${encodeURIComponent(area)}%0A +
+        🏠 *Street/Landmark:* ${encodeURIComponent(address)}%0A +
+        💰 *Delivery Fee:* ₦${encodeURIComponent(fee)}%0A%0A +
         🛒 *Shopping List:*%0A${encodeURIComponent(items)};
 
-      // Create full WhatsApp web link
-      const whatsappWebUrl = https://wa.me/${MY_WHATSAPP_NUMBER}?text=${messageText};
-
-      // Update and display link box
-      const directLinkBtn = document.getElementById('directWhatsAppLink');
-      directLinkBtn.href = whatsappWebUrl;
-      document.getElementById('generatedLinkBox').style.display = 'block';
-
-      // Automatically open WhatsApp in a new tab
-      window.open(whatsappWebUrl, '_blank');
+      const whatsappUrl = https://wa.me/${MY_WHATSAPP_NUMBER}?text=${messageText};
+      window.open(whatsappUrl, '_blank');
     });
   </script>
 </body>
